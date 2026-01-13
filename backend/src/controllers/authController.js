@@ -23,7 +23,7 @@ const authController = {
       role: req.user.role,
     };
 
-    res.redirect("http://localhost:5173/admin/dashboard");
+    res.redirect("https://2nd-cafemydurian.vercel.app/admin/dashboard");
   },
 
   googleLogout: (req, res) => {
