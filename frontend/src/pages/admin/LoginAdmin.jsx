@@ -2,22 +2,20 @@ import { LogIn } from "lucide-react";
 
 export default function LoginAdmin() {
   const handleLogin = () => {
-    window.location.href = "http://localhost:5000/api/auth/google";
+    window.location.href =
+      "https://twond-cafemydurian.onrender.com/api/auth/google";
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br bg-yellow-100">
       <div className="bg-orange-400 w-full max-w-md p-8 rounded-2xl shadow-lg">
-        
         {/* Header */}
         <div className="text-center mb-8 bg-orange-400">
           <div className="mx-auto w-14 h-14 flex items-center justify-center bg-yellow-400 text-white rounded-full mb-4">
             <LogIn size={28} />
           </div>
           <h1 className="text-2xl font-bold text-white">Admin Login</h1>
-          <p className="text-white text-sm mt-1">
-            Masuk ke dashboard admin
-          </p>
+          <p className="text-white text-sm mt-1">Masuk ke dashboard admin</p>
         </div>
 
         {/* Button */}

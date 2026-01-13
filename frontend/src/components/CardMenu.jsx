@@ -12,7 +12,6 @@ const CardMenu = ({
   cart,
   loading,
 }) => {
-
   const itemInCart = cart?.find((item) => item.id === id);
   const qty = itemInCart ? itemInCart.quantity : 0;
 
@@ -28,10 +27,9 @@ const CardMenu = ({
 
   return (
     <div className="relative bg-white rounded-xl shadow hover:shadow-md transition p-3 flex flex-col">
-
       {/* Product Image */}
       <img
-        src={`http://localhost:5000${image}`}
+        src={`https://twond-cafemydurian.onrender.com${image}`}
         alt={name}
         className="w-full h-28 object-cover rounded-lg"
       />

@@ -33,7 +33,9 @@ const MenuPages = () => {
   useEffect(() => {
     const fetchMenu = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/menu");
+        const res = await fetch(
+          "https://twond-cafemydurian.onrender.com/api/menu"
+        );
         const data = await res.json();
         setMenus(data.data || data);
       } catch (err) {
@@ -54,9 +56,7 @@ const MenuPages = () => {
       const existing = prev.find((i) => i.id === product.id);
       if (existing) {
         return prev.map((i) =>
-          i.id === product.id
-            ? { ...i, quantity: i.quantity + 1 }
-            : i
+          i.id === product.id ? { ...i, quantity: i.quantity + 1 } : i
         );
       }
       return [...prev, { ...product, quantity: 1 }];
@@ -66,9 +66,7 @@ const MenuPages = () => {
   const subtractFromCart = (id) => {
     setCart((prev) =>
       prev
-        .map((i) =>
-          i.id === id ? { ...i, quantity: i.quantity - 1 } : i
-        )
+        .map((i) => (i.id === id ? { ...i, quantity: i.quantity - 1 } : i))
         .filter((i) => i.quantity > 0)
     );
   };
@@ -79,8 +77,7 @@ const MenuPages = () => {
   const filteredMenus = useMemo(() => {
     return menus.filter(
       (menu) =>
-        (activeCategory === "all" ||
-          menu.category === activeCategory) &&
+        (activeCategory === "all" || menu.category === activeCategory) &&
         menu.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }, [menus, activeCategory, searchTerm]);
@@ -89,7 +86,6 @@ const MenuPages = () => {
 
   return (
     <div className="min-h-screen p-4 bg-gradient-to-b from-amber-50 to-orange-50">
-
       {/* SEARCH & CART */}
       <div className="flex items-center gap-2 mb-4">
         <input
@@ -102,9 +98,7 @@ const MenuPages = () => {
 
         <button
           disabled={totalItems === 0}
-          onClick={() =>
-            navigate("/detail", { state: { cart, note } })
-          }
+          onClick={() => navigate("/detail", { state: { cart, note } })}
           className={`relative p-3 rounded-full shadow transition
             ${
               totalItems === 0
@@ -134,9 +128,7 @@ const MenuPages = () => {
                   : "bg-white border border-amber-300 text-amber-700"
               }`}
           >
-            {cat === "all"
-              ? "All"
-              : cat.charAt(0).toUpperCase() + cat.slice(1)}
+            {cat === "all" ? "All" : cat.charAt(0).toUpperCase() + cat.slice(1)}
           </button>
         ))}
       </div>
@@ -171,7 +163,8 @@ const MenuPages = () => {
           <div className="bg-white w-80 p-5 rounded-xl shadow-lg text-center">
             <p className="text-gray-800 mb-4 font-medium">
               Jika kembali ke halaman utama, semua pesanan akan hilang.
-              <br />Lanjutkan?
+              <br />
+              Lanjutkan?
             </p>
 
             <div className="flex justify-center gap-3">

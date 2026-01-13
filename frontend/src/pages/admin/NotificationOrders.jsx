@@ -5,11 +5,11 @@ export default function NotificationOrders() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/orders/notifications", {
+    fetch("https://twond-cafemydurian.onrender.com/api/orders/notifications", {
       credentials: "include",
     })
-      .then(res => res.json())
-      .then(data => setOrders(data));
+      .then((res) => res.json())
+      .then((data) => setOrders(data));
   }, []);
 
   return (
@@ -22,7 +22,7 @@ export default function NotificationOrders() {
             Tidak ada notifikasi order
           </div>
         ) : (
-          orders.map(order => (
+          orders.map((order) => (
             <div
               key={order._id}
               className={`p-4 flex justify-between items-center ${
@@ -30,9 +30,7 @@ export default function NotificationOrders() {
               }`}
             >
               <div>
-                <p className="font-semibold">
-                  Order Baru #{order._id}
-                </p>
+                <p className="font-semibold">Order Baru #{order._id}</p>
                 <p className="text-sm text-gray-500">
                   {order.customerName} •{" "}
                   {new Date(order.createdAt).toLocaleString("id-ID")}

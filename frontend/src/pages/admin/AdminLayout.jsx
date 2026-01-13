@@ -7,10 +7,10 @@ export default function AdminLayout() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/auth/me", {
+    fetch("https://twond-cafemydurian.onrender.com/api/auth/me", {
       credentials: "include",
     })
-      .then(res => {
+      .then((res) => {
         if (!res.ok) throw new Error("Unauthorized");
         return res.json();
       })

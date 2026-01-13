@@ -12,14 +12,16 @@ export default function MenuAdmin() {
     name: "",
     price: "",
     category: "",
-    image: null,     // file baru
-    oldImage: null,  // path gambar lama
+    image: null, // file baru
+    oldImage: null, // path gambar lama
   });
 
   // ================= FETCH MENU =================
   const fetchMenus = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/menu");
+      const res = await fetch(
+        "https://twond-cafemydurian.onrender.com/api/menu"
+      );
       const json = await res.json();
       setMenus(json.data || json);
     } catch (err) {
@@ -80,8 +82,8 @@ export default function MenuAdmin() {
 
     const isEdit = Boolean(form.id);
     const url = isEdit
-      ? `http://localhost:5000/api/menu/${form.id}`
-      : "http://localhost:5000/api/menu";
+      ? `https://twond-cafemydurian.onrender.com/api/menu/${form.id}`
+      : "https://twond-cafemydurian.onrender.com/api/menu";
 
     try {
       await fetch(url, {
@@ -115,7 +117,7 @@ export default function MenuAdmin() {
     if (!window.confirm("Hapus menu ini?")) return;
 
     try {
-      await fetch(`http://localhost:5000/api/menu/${id}`, {
+      await fetch(`https://twond-cafemydurian.onrender.com/api/menu/${id}`, {
         method: "DELETE",
         credentials: "include",
       });
@@ -157,7 +159,7 @@ export default function MenuAdmin() {
             />
           ) : form.oldImage ? (
             <img
-              src={`http://localhost:5000${form.oldImage}`}
+              src={`https://twond-cafemydurian.onrender.com${form.oldImage}`}
               alt="Preview Lama"
               className="w-24 h-24 object-cover rounded mb-3"
             />
@@ -237,7 +239,7 @@ export default function MenuAdmin() {
             <tr key={menu.id} className="border-t">
               <td className="p-3">
                 <img
-                  src={`http://localhost:5000${menu.image}`}
+                  src={`https://twond-cafemydurian.onrender.com${menu.image}`}
                   alt={menu.name}
                   className="w-16 h-16 object-cover rounded"
                 />
