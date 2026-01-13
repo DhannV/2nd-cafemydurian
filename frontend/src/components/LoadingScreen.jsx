@@ -35,7 +35,7 @@ export default function LoadingScreen() {
             <div className="absolute inset-0 bg-[#FFCC00] rounded-full"></div>
             <div className="absolute inset-4">
               <img
-                src="/public/logo-yellow.png"
+                src="frontend/public/logo-yellow.png"
                 alt="Cafe MyDurian Logo"
                 className="w-full h-full object-contain"
               />
@@ -49,7 +49,7 @@ export default function LoadingScreen() {
             <div className="absolute inset-0 bg-[#FFCC00] rounded-full"></div>
             <div className="absolute inset-4">
               <img
-                src="/public/logo-yellow.png"
+                src="frontend/public/logo-yellow.png"
                 alt="Cafe MyDurian Logo"
                 className="w-full h-full object-contain"
               />

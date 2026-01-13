@@ -31,7 +31,7 @@ const Home = () => {
       <div className="min-h-screen flex flex-col items-center justify-center text-[#FCF9F7] p-6 ">
         <img
           className="pb-10"
-          src="public/logo-yellow.png"
+          src="frontend/public/logo-yellow.png"
           alt="logo my durian"
         />
         <h1 className="text-3xl font-extrabold text-[#FFCC00] mb-6 text-center">
