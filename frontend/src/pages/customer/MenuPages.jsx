@@ -125,8 +125,8 @@ const MenuPages = () => {
             className={`px-4 py-2 rounded-full text-sm font-medium transition
               ${
                 activeCategory === cat
-                  ? "bg-amber-500 text-white shadow"
-                  : "bg-white border border-amber-300 text-amber-700"
+                  ? "bg-[#FFCC00] text-white shadow"
+                  : "bg-white border border-amber-300 text-[#757575]"
               }`}
           >
             {cat === "all" ? "All" : cat.charAt(0).toUpperCase() + cat.slice(1)}
@@ -153,7 +153,7 @@ const MenuPages = () => {
 
       {/* BACK BUTTON */}
       <Button
-        color="orange"
+        color="yellow"
         text="Kembali ke awal"
         onClick={() => setShowConfirm(true)}
       />

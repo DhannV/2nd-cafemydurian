@@ -1,4 +1,5 @@
 import { LogIn } from "lucide-react";
+import footer from "../../components/customer/Footer.jsx";
 
 export default function LoginAdmin() {
   const handleLogin = () => {
@@ -7,11 +8,11 @@ export default function LoginAdmin() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br bg-yellow-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br bg-white">
       <div className="bg-orange-400 w-full max-w-md p-8 rounded-2xl shadow-lg">
         {/* Header */}
-        <div className="text-center mb-8 bg-orange-400">
-          <div className="mx-auto w-14 h-14 flex items-center justify-center bg-yellow-400 text-white rounded-full mb-4">
+        <div className="text-center mb-8 bg-[#FFCC00]">
+          <div className="mx-auto w-14 h-14 flex items-center justify-center bg-[#FFCC00] text-white rounded-full mb-4">
             <LogIn size={28} />
           </div>
           <h1 className="text-2xl font-bold text-white">Admin Login</h1>
@@ -36,6 +37,7 @@ export default function LoginAdmin() {
           Hanya admin terdaftar yang dapat mengakses sistem
         </p>
       </div>
+      <Footer />
     </div>
   );
 }
