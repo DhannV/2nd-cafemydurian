@@ -83,15 +83,15 @@ try {
   }
 } catch (err) {
   console.error("DB connection failed:", err);
-  process.exit(1);
+  sequelize
+    .authenticate()
+    .then(() => console.log("DB connected"))
+    .catch((err) => console.error("DB error:", err.message));
 }
 
 /* ================== STATIC FILES ================== */
 
-app.use(
-  "/uploads",
-  express.static(path.join(process.cwd(), "uploads"))
-);
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 /* ================== ROUTES ================== */
 
