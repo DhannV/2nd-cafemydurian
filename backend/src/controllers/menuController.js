@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import Menu from "../models/Menu.js";
+import Menu from "../models/menu.js";
 
 const getImagePath = (image) =>
   path.join(process.cwd(), "uploads", "menu", path.basename(image));
