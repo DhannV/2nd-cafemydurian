@@ -19,10 +19,7 @@ const DetailPages = () => {
      HITUNG TOTAL (OPTIMIZED)
   ================================ */
   const totalPrice = useMemo(() => {
-    return cart.reduce(
-      (sum, item) => sum + item.price * item.quantity,
-      0
-    );
+    return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   }, [cart]);
 
   /* ===============================
@@ -69,8 +66,7 @@ const DetailPages = () => {
 
       if (axios.isAxiosError(err)) {
         setError(
-          err.response?.data?.message ||
-            "Gagal menghubungi server pembayaran"
+          err.response?.data?.message || "Gagal menghubungi server pembayaran"
         );
       } else {
         setError("Terjadi kesalahan saat memproses pembayaran");
@@ -83,13 +79,13 @@ const DetailPages = () => {
   return (
     <div className="min-h-screen bg-amber-50 p-4 flex flex-col">
       {/* TITLE */}
-      <h1 className="text-2xl font-bold text-center text-amber-600 mb-6">
+      <h1 className="text-2xl font-bold text-center text-[#FFCC00] mb-6">
         Detail Pesanan
       </h1>
 
       {/* CART EMPTY */}
       {cart.length === 0 ? (
-        <p className="text-center text-amber-600 text-base">
+        <p className="text-center text-[#FFCC00] text-base">
           Keranjang masih kosong
         </p>
       ) : (
@@ -102,12 +98,8 @@ const DetailPages = () => {
                 className="bg-white p-4 rounded-2xl shadow-sm border border-amber-200 flex justify-between items-center"
               >
                 <div>
-                  <h2 className="text-gray-900 font-semibold">
-                    {item.name}
-                  </h2>
-                  <p className="text-sm text-gray-600">
-                    Qty: {item.quantity}
-                  </p>
+                  <h2 className="text-gray-900 font-semibold">{item.name}</h2>
+                  <p className="text-sm text-gray-600">Qty: {item.quantity}</p>
                 </div>
 
                 <p className="font-semibold text-gray-900">
@@ -139,14 +131,12 @@ const DetailPages = () => {
 
           {/* ERROR */}
           {error && (
-            <p className="text-sm text-red-600 text-center mb-3">
-              {error}
-            </p>
+            <p className="text-sm text-red-600 text-center mb-3">{error}</p>
           )}
 
           {/* ACTION BUTTON */}
           <Button
-            color="orange"
+            color="yellow"
             text={loading ? "Memproses..." : "Bayar dengan QRIS"}
             icon={<MdQrCode size={20} />}
             disabled={loading}
@@ -155,9 +145,7 @@ const DetailPages = () => {
 
           {/* BACK */}
           <button
-            onClick={() =>
-              navigate("/menu", { state: { cart, note } })
-            }
+            onClick={() => navigate("/menu", { state: { cart, note } })}
             className="mt-4 text-sm text-amber-700 hover:underline self-center"
             disabled={loading}
           >
