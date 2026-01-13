@@ -7,6 +7,7 @@ import LoadingScreen from "../../components/LoadingScreen";
 
 const Home = () => {
   const navigate = useNavigate();
+  const [showLoading, setShowLoading] = useState(false);
 
   const handleNavigateMenu = (type) => {
     navigate("/menu", { state: { orderType: type } });
@@ -18,6 +19,8 @@ const Home = () => {
   return (
     <>
       {showLoading && <LoadingScreen />}
+
+      {/* ---------- MAIN PAGE ---------- */}
       <div className="min-h-screen flex flex-col items-center justify-center bg-yellow-100 p-6">
         <h1 className="text-3xl font-extrabold text-yellow-800 mb-6 text-center">
           Selamat Datang di{" "}
