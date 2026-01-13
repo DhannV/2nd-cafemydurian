@@ -1,6 +1,7 @@
 // components/CardMenu.jsx
 import React from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
+const BASE_URL = "https://twond-cafemydurian.onrender.com";
 
 const CardMenu = ({
   id,
@@ -29,8 +30,11 @@ const CardMenu = ({
     <div className="relative bg-white rounded-xl shadow hover:shadow-md transition p-3 flex flex-col">
       {/* Product Image */}
       <img
-        src={`https://twond-cafemydurian.onrender.com${image}`}
+        src={`${BASE_URL}${image.startsWith("/") ? "" : "/"}${image}`}
         alt={name}
+        onError={(e) => {
+          e.target.src = "/placeholder.png";
+        }}
         className="w-full h-28 object-cover rounded-lg"
       />
 
