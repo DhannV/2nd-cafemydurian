@@ -3,8 +3,6 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import CardMenu from "../../components/CardMenu";
 import Button from "../../components/Button";
-import LoadingScreen from "../components/LoadingScreen";
-import Footer from "../components/Footer";
 
 const CATEGORIES = ["all", "durian", "kopi", "gula"];
 
@@ -187,7 +185,6 @@ const MenuPages = () => {
           </div>
         </div>
       )}
-      <Footer />
     </div>
   );
 };

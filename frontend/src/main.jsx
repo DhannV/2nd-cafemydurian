@@ -17,7 +17,6 @@ import ReportMonthly from "./pages/admin/ReportMonthly.jsx";
 import ReportYearly from "./pages/admin/ReportYearly.jsx";
 import NotificationOrders from "./pages/admin/NotificationOrders.jsx";
 
-import LoadingScreen from "./components/LoadingScreen.jsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
