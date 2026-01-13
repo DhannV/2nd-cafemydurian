@@ -9,7 +9,7 @@ import { emitPaymentUpdate } from "../utils/socket.js";
    MIDTRANS CONFIG
 ========================= */
 const snap = new midtransClient.Snap({
-  isProduction: true, // ⛔ ubah ke true saat live
+  isProduction: false, // ⛔ ubah ke true saat live
   serverKey: process.env.MIDTRANS_SERVER_KEY,
 });
 
