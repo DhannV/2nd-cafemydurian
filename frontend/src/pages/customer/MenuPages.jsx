@@ -86,9 +86,9 @@ const MenuPages = () => {
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="min-h-screen p-4 bg-gradient-to-b from-amber-50 to-orange-50">
-      {/* SEARCH & CART */}
-      <div className="flex items-center gap-2 mb-4">
+    <div className="p-4 min-h-screen bg-gradient-to-b bg-[#FCF9F7]">
+      {/* Search + Cart */}
+      <div className="flex justify-between items-center mb-4">
         <input
           type="text"
           placeholder="Cari menu..."
@@ -98,14 +98,11 @@ const MenuPages = () => {
         />
 
         <button
-          disabled={totalItems === 0}
-          onClick={() => navigate("/detail", { state: { cart, note } })}
-          className={`relative p-3 rounded-full shadow transition
-            ${
-              totalItems === 0
-                ? "bg-gray-300 cursor-not-allowed"
-                : "bg-amber-500 text-white active:scale-95"
-            }`}
+          className="relative ml-2 p-3 bg-[#FFCC00] text-white rounded-full shadow active:scale-95"
+          // Saat pindah ke detail, kita bawa orderId juga
+          onClick={() =>
+            navigate("/detail", { state: { cart, note, orderId } })
+          }
         >
           🛒
           {totalItems > 0 && (
@@ -116,69 +113,68 @@ const MenuPages = () => {
         </button>
       </div>
 
-      {/* CATEGORY */}
+      {/* Category filter */}
       <div className="flex gap-2 overflow-x-auto mb-4 pb-1">
-        {CATEGORIES.map((cat) => (
+        {categories.map((cat) => (
           <button
             key={cat}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition ${
+              activeCategory === cat
+                ? "bg-[#FFCC00] text-white shadow"
+                : "bg-white border border-amber-300 text-[#757575]"
+            }`}
             onClick={() => setActiveCategory(cat)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition
-              ${
-                activeCategory === cat
-                  ? "bg-amber-500 text-white shadow"
-                  : "bg-white border border-amber-300 text-amber-700"
-              }`}
           >
-            {cat === "all" ? "All" : cat.charAt(0).toUpperCase() + cat.slice(1)}
+            {cat}
           </button>
         ))}
       </div>
 
-      {/* MENU GRID */}
-      <div className="grid grid-cols-2 gap-3 pb-28">
+      {/* Menu Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-3 mb-6">
         {loading
-          ? Array.from({ length: 8 }).map((_, i) => (
-              <CardMenu key={i} loading cart={[]} />
-            ))
+          ? Array(10)
+              .fill(0)
+              .map((_, i) => <CardMenu key={i} loading cart={[]} />)
           : filteredMenus.map((item) => (
               <CardMenu
                 key={item.id}
                 {...item}
+                // Pastikan CardMenu menggunakan props ini dengan benar
+                addToCart={() => handleAddToCart(item)}
+                subtractFromCart={() => handleSubtractFromCart(item.id)}
                 cart={cart}
-                addToCart={addToCart}
-                subtractFromCart={subtractFromCart}
               />
             ))}
       </div>
 
-      {/* BACK BUTTON */}
+      {/* Button Back */}
       <Button
-        color="orange"
+        color="yellow"
         text="Kembali ke awal"
         onClick={() => setShowConfirm(true)}
       />
 
-      {/* CONFIRM MODAL */}
+      {/* Popup */}
       {showConfirm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-          <div className="bg-white w-80 p-5 rounded-xl shadow-lg text-center">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="bg-[#FCF9F7] w-80 p-5 rounded-xl shadow-lg text-center">
             <p className="text-gray-800 mb-4 font-medium">
-              Jika kembali ke halaman utama, semua pesanan akan hilang.
-              <br />
-              Lanjutkan?
+              Jika anda kembali ke halaman utama, semua pesanan akan hilang.
+              <br /> Ingin lanjut?
             </p>
 
-            <div className="flex justify-center gap-3">
+            <div className="flex gap-3 justify-center">
               <button
-                className="px-4 py-2 bg-orange-300 rounded-lg font-semibold"
+                className="px-4 py-2 bg-orange-400 rounded-lg text-gray-800 font-semibold active:scale-95"
                 onClick={() => setShowConfirm(false)}
               >
                 Batal
               </button>
 
               <button
-                className="px-4 py-2 bg-yellow-500 text-white rounded-lg font-semibold"
-                onClick={() => navigate("/home")}
+                className="px-4 py-2 bg-yellow-500 rounded-lg text-white font-semibold active:scale-95"
+                onClick={() => navigate("/")}
               >
                 Lanjut
               </button>

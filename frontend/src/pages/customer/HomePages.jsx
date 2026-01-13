@@ -10,10 +10,17 @@ const Home = () => {
   const [showLoading, setShowLoading] = useState(false);
 
   const handleNavigateMenu = (type) => {
-    navigate("/menu", { state: { orderType: type } });
+    setShowLoading(true); // munculkan loading
+    setTimeout(() => {
+      navigate("/menu", { state: { orderType: type } });
+    }, 4000);
   };
+
   const handleNavigateAdmin = (type) => {
-    navigate("/admin", { state: { orderType: type } });
+    setShowLoading(true); // munculkan loading
+    setTimeout(() => {
+      navigate("/admin", { state: { orderType: type } });
+    }, 4000);
   };
 
   return (
@@ -21,10 +28,15 @@ const Home = () => {
       {showLoading && <LoadingScreen />}
 
       {/* ---------- MAIN PAGE ---------- */}
-      <div className="min-h-screen flex flex-col items-center justify-center bg-yellow-100 p-6">
-        <h1 className="text-3xl font-extrabold text-yellow-800 mb-6 text-center">
+      <div className="min-h-screen flex flex-col items-center justify-center text-[#FCF9F7] p-6 ">
+        <img
+          className="pb-10"
+          src="public/logo-yellow.png"
+          alt="logo my durian"
+        />
+        <h1 className="text-3xl font-extrabold text-[#FFCC00] mb-6 text-center">
           Selamat Datang di{" "}
-          <span className="text-yellow-600">Cafe MyDurian</span>
+          <span className="text-[#FFCC00]">Cafe MyDurian</span>
         </h1>
 
         <p className="text-gray-700 text-center mb-8 max-w-md">
@@ -33,7 +45,7 @@ const Home = () => {
 
         <div className="flex flex-col w-full max-w-sm gap-4">
           <Button
-            color="orange"
+            color="yellow"
             text="Dine-In"
             icon={<FaUtensils />}
             onClick={() => handleNavigateMenu("dine-in")}
@@ -47,7 +59,7 @@ const Home = () => {
           <Button
             color="white"
             text="login admin"
-            onClick={() => handleNavigateAdmin("admin")}
+            onClick={() => handleNavigateMenu("admin")}
           />
         </div>
         <Footer />
