@@ -17,6 +17,7 @@ import ReportMonthly from "./pages/admin/ReportMonthly.jsx";
 import ReportYearly from "./pages/admin/ReportYearly.jsx";
 import NotificationOrders from "./pages/admin/NotificationOrders.jsx";
 
+import LoadingScreen from "./components/LoadingScreen.jsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -27,7 +28,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/home" element={<HomePages />} />
         <Route path="/menu" element={<MenuPages />} />
         <Route path="/detail" element={<DetailPages />} />
-        <Route path="/payment-online-succes" element={<PaymentOnlineSucces />} />
+        <Route
+          path="/payment-online-succes"
+          element={<PaymentOnlineSucces />}
+        />
 
         <Route path="/admin/login" element={<LoginAdmin />} />
         <Route path="/admin" element={<AdminLayout />}>
@@ -36,9 +40,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="menu" element={<MenuManagement />} />
           <Route path="history" element={<TransactionHistory />} />
           <Route path="report/daily" element={<ReportDaily />} />
-          <Route path="report/monthly" element={<ReportMonthly/>} />
+          <Route path="report/monthly" element={<ReportMonthly />} />
           <Route path="report/yearly" element={<ReportYearly />} />
-          <Route path="notification" element={<NotificationOrders/>} />
+          <Route path="notification" element={<NotificationOrders />} />
         </Route>
       </Routes>
     </BrowserRouter>
