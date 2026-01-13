@@ -18,7 +18,7 @@ const snap = new midtransClient.Snap({
 ========================= */
 export const createPayment = async (req, res) => {
   try {
-    const { amount, message, payment_method = "qris" } = req.body;
+    const { amount, message, payment_method = "bca_va" } = req.body;
 
     if (!amount || amount <= 0) {
       return res.status(400).json({ message: "Invalid amount" });
