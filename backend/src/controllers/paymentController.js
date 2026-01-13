@@ -9,7 +9,7 @@ import { emitPaymentUpdate } from "../utils/socket.js";
    MIDTRANS CONFIG
 ========================= */
 const snap = new midtransClient.Snap({
-  isProduction: false, // ⛔ ubah ke true saat live
+  isProduction: true, // ⛔ ubah ke true saat live
   serverKey: process.env.MIDTRANS_SERVER_KEY,
 });
 
@@ -32,7 +32,7 @@ export const createPayment = async (req, res) => {
     const expiry = {
       start_time: startTime.format("YYYY-MM-DD HH:mm:ss ZZ"),
       unit: "minute",
-      duration: 1,
+      duration: 5,
     };
 
     // SIMPAN TRANSAKSI
@@ -93,10 +93,7 @@ export const midtransWebhook = async (req, res) => {
        SIGNATURE VALIDATION (WAJIB)
     ========================= */
     const rawSignature =
-      order_id +
-      status_code +
-      gross_amount +
-      process.env.MIDTRANS_SERVER_KEY;
+      order_id + status_code + gross_amount + process.env.MIDTRANS_SERVER_KEY;
 
     const expectedSignature = crypto
       .createHash("sha512")
@@ -137,9 +134,7 @@ export const midtransWebhook = async (req, res) => {
 
     if (transaction_status === "settlement") {
       statusPaid = "settlement";
-      paidAt = settlement_time
-        ? dayjs(settlement_time).toDate()
-        : new Date();
+      paidAt = settlement_time ? dayjs(settlement_time).toDate() : new Date();
     }
 
     if (transaction_status === "expire") {
