@@ -184,9 +184,9 @@ const MenuPages = () => {
               </button>
             </div>
           </div>
-          <Footer />
         </div>
       )}
+      <Footer />
     </div>
   );
 };
