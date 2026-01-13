@@ -9,6 +9,9 @@ const Home = () => {
   const handleNavigateMenu = (type) => {
     navigate("/menu", { state: { orderType: type } });
   };
+  const handleNavigateAdmin = (type) => {
+    navigate("/admin", { state: { orderType: type } });
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-yellow-100 p-6">
@@ -32,6 +35,11 @@ const Home = () => {
           text="Bungkus"
           icon={<FaShoppingBag />}
           onClick={() => handleNavigateMenu("takeaway")}
+        />
+        <Button
+          color="white"
+          text="login admin"
+          onClick={() => handleNavigateAdmin("admin")}
         />
       </div>
     </div>

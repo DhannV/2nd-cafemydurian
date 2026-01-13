@@ -4,6 +4,7 @@ const Button = ({ text, color, onClick, icon }) => {
   const colorClasses = {
     yellow: "bg-yellow-400 text-yellow-900 hover:bg-yellow-500",
     orange: "bg-orange-400 text-white hover:bg-orange-500",
+    white: "bg-white text-gray-800 hover:bg-gray-100",
   };
 
   return (
