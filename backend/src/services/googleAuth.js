@@ -6,6 +6,7 @@ import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 const adminUsers = [
   "adminmu@gmail.com",
   "ranggaarifianto1@gmail.com",
+  "alrizky2906@gmail.com",
 ];
 
 passport.use(
@@ -13,7 +14,8 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:5000/api/auth/google/callback",
+      callbackURL:
+        "https://2nd-cafemydurian.vercel.app/api/auth/google/callback",
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
