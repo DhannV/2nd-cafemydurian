@@ -59,7 +59,7 @@ const Home = () => {
           <Button
             color="white"
             text="login admin"
-            onClick={() => handleNavigateMenu("admin")}
+            onClick={() => handleNavigateAdmin("admin")}
           />
         </div>
         <Footer />

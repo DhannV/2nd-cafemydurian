@@ -27,7 +27,7 @@ const CardMenu = ({
   }
 
   return (
-    <div className="bg-white rounded-xl shadow hover:shadow-md transition p-3 mx-auto w-full">
+    <div className="bg-white rounded-xl shadow hover:shadow-md transition p-2 mx-auto w-full max-w-[180px] sm:max-w-[200px] md:max-w-[210px]">
       <div className="w-full rounded-lg overflow-hidden">
         <img
           src={`${BASE_URL}${image.startsWith("/") ? "" : "/"}${image}`}
