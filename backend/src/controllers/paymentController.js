@@ -51,7 +51,7 @@ export const createPayment = async (req, res) => {
         order_id: invoice,
         gross_amount: amount,
       },
-      enabled_payments: [qris],
+      enabled_payments: [payment_method],
       expiry,
     };
 
